@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { MdOutlineWavingHand } from 'react-icons/md'
 
 const links = [
-	{ label: 'Story', href: '/story' },
-	{ label: 'Recipes', href: '/recipes' },
+	{ label: 'New', href: '/new' },
+	{ label: 'Existing', href: '/existing' },
+	{ label: 'Settings', href: '/settings' },
 ]
 
 const Appbar = () => {
@@ -14,9 +16,10 @@ const Appbar = () => {
 			<header className='border-b bg-zinc-100 px-safe dark:border-zinc-800 dark:bg-zinc-900'>
 				<div className='mx-auto flex h-20 max-w-screen-md items-center justify-between px-6'>
 					<Link href='/'>
-						<a>
-							<h1 className='font-medium'>Rice Bowl</h1>
-						</a>
+						<div className='flex flex-row items-center gap-2 cursor-pointer'>
+							<MdOutlineWavingHand size={20} />
+							<h1 className='font-medium'>Helping Hand</h1>
+						</div>
 					</Link>
 
 					<nav className='flex items-center space-x-6'>
@@ -25,7 +28,7 @@ const Appbar = () => {
 								{links.map(({ label, href }) => (
 									<Link key={label} href={href}>
 										<a
-											className={`text-sm ${
+											className={`text-sm cursor-pointer ${
 												router.pathname === href
 													? 'text-indigo-500 dark:text-indigo-400'
 													: 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50'
